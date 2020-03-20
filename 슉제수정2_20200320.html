@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width>, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css?family=Stylish&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+
+    <script language="javascript">
+
+        function isCellphone(phone) {
+            if (phone.length != 13) {
+                return false;
+            }
+            return true;
+        }
+
+        function notice() {
+
+            let name = $('#name').val();
+            let count = $('#count').val();
+            let address = $('#address').val();
+            let phone = $('#phone').val();
+
+            if (name == "") {
+                alert('주문자 성함이 입력되지 않았어요!')
+                $('#name').focus()
+                return;
+
+            } else if (count == "") {
+                alert("수량이 선택되지 않았어요!");
+                $('#count').focus()
+                return;
+
+            } else if (address == "") {
+                alert("주소가 입력되지 않았어요!");
+                $('#address').focus()
+                return;
+            }
+            
+            if (phone == "") {
+                alert('휴대폰번호 입력 형식이 틀립니다. 010-0000-0000으로 입력해주세요')
+                return;
+
+            } else if (isCellphone(phone) == false) {
+                alert('휴대폰번호 입력 형식이 틀립니다. 010-0000-0000으로 입력해주세요')
+                return;
+            }
+
+        }
+
+    </script>
+
+    <Style>
+        .wrap {
+            width: 700px;
+            margin: auto;
+        }
+
+        .card-img-bottom {
+            border-radius: 10px;
+        }
+
+        .gift {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+
+        * {
+            font-family: 'Stylish', sans-serif;
+        }
+
+
+        p {
+            text-align: center;
+        }
+
+        h1,h5 {
+            display: inline;
+        }
+
+        .info {
+            margin-top: 20px;
+            margin-bottom: 20px;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+        }
+    </Style>
+
+
+</head>
+
+<body>
+
+
+    <div class="wrap">
+        <div image>
+            <img class="card-img-bottom" style="center"
+                src="http://plan-b.or.kr/files/attach/images/311/053/013/8f7656166e37a44f89b9cd15bbfe1778.jpg" alt=""
+                width="100%"></div>
+
+
+
+        <div class="gift">
+
+            <div class="info">
+                <h1>토끼토끼</h1>
+                <h5>가격: 1,000,000원 / 마리</h5>
+                <p>이 상품으로 말할 것 같으면..</p>
+            </div>
+
+            <h1>주문하기</h1>
+
+            <div class="input-group mb-1">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">주문자 성함</span>
+                </div>
+                <input type="text" class="form-control" id="name">
+            </div>
+
+
+            <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                    <label class="input-group-text" for="inputGroupSelect01">수량</label>
+                </div>
+                <select class="custom-select" id="count">
+                    <option selected value="">-- 수량을 선택하세요 --</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+
+
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">주소</span>
+                </div>
+                <input type="text" class="form-control" id="address">
+            </div>
+
+
+            <div class="input-group mb-4">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">전화번호</span>
+                </div>
+                <input type="text" class="form-control" id="phone">
+            </div>
+
+            <button onclick="notice()" class="btn btn-primary" type="submit">주문하기</button>
+
+
+
+        </div>
+    </div>
+
+</body>
+
+</html>
