@@ -60,36 +60,37 @@
     <script>
 
             
-    $(document).ready(function () {
-        $('#cards-box').html('');
-        listing();
-    });
+        $(document).ready(function () {
+            $('#cards-box').html('');
+            listing();
+        });
 
-    function listing() {
-        $.ajax({
-            type: "GET",
-            url: "http://spartacodingclub.shop/post",
-            data: {},
-            success: function (response) {
-                let articles = response['articles'];
-                for (let i = 0; i < articles.length; i++) {
-                    make_card(articles[i]['comment'], articles[i]['desc'], articles[i]['image'], articles[i]['title'], articles[i]['url'])
+        function listing() {
+            $.ajax({
+                type: "GET",
+                url: "http://spartacodingclub.shop/post",
+                data: {},
+                success: function (response) {
+                    let articles = response['articles'];
+                    for (let i = 0; i < articles.length; i++) {
+                        make_card(articles[i]['comment'], articles[i]['desc'], articles[i]['image'], articles[i]['title'], articles[i]['url'])
+                    }
                 }
-            }
-        })
-    }
+            })
+        }
 
-    function make_card(comment, desc, image, title, url) {
-        let temp_html = '<div class="card">\
-    <img class="card-img-top" src="'+ image + '" alt="Card image cap">\
-    <div class="card-body">\
-      <a href="'+ url + '" class="card-title">' + title + '</a>\
-      <p class="card-text">'+ desc + '</p>\
-      <p class="card-text comment">'+ comment + '</p>\
-    </div>\
-  </div>';
-        $('#cards-box').append(temp_html);
-    }
+        function make_card(comment, desc, image, title, url) {
+            let temp_html = '<div class="card">\
+        <img class="card-img-top" src="'+ image + '" alt="Card image cap">\
+        <div class="card-body">\
+        <a href="'+ url + '" class="card-title">' + title + '</a>\
+        <p class="card-text">'+ desc + '</p>\
+        <p class="card-text comment">'+ comment + '</p>\
+        </div>\
+        </div>';
+
+            $('#cards-box').append(temp_html);
+        }
         function openclose() {
             // id 값 post-box의 display 값이 block 이면
             if ($('#post-box').css('display') == 'block') {
@@ -103,26 +104,6 @@
             }
         }
 
-
-        $.ajax({
-            type: "get",
-            url: "http://spartacodingclub.shop/post",
-            data: {},
-            success: function (response) {
-
-                for (let i = 0; i < response.length; i++) {
-
-                    let dat = response['Object']['articles'][i]['comment']
-                    let sul = response['Object']['articles'][i]['desc']
-                    let img = response['Object']['articles'][i]['image']
-                    let je = response['Object']['articles'][i]['title']
-                    let urlurl = reseponse['Object']['articles'][i]['url']
-
-                    let gul = img + je + sul + je + url
-                    $(response).append('gul');
-                }
-            }
-        });
     </script>
 
 </head>
